@@ -37,24 +37,16 @@ node {
    archiveArtifacts 'target/*.war'
   }
 
-stage('Jfrog Artifactory')
-    {
-        steps
-        {
-            script
-            {
-                Pipeline_Message=env.STAGE_NAME
-                echo "Uploaded to Jfrog Artifactory"
-                def server= Artifactory.server 'Artifactory'
-                def uploadSpec= """{
-                    "files": [{
-                    "pattern": "/root/.jenkins/workspace/Pet-4/01-Jenkins/Code/petclinic/target/*.war",
-                    "target": "appapapa"}]
-                }"""
-                server.upload(uploadSpec)
-            }
+  stage('Jfrog Artifacory Upload') {
+        def server= Artifactory.server 'Artifactory'
+                    def uploadSpec= """{
+                        "files": [{
+                        "pattern": "/root/.jenkins/workspace/Pet-4/01-Jenkins/Code/petclinic/target/*.war",
+                        "target": "appapapa"}]
+                    }"""
+        server.upload(uploadSpec)
+        
         }
-    }
 
    stage('Docker-Stage-Deployment') {
    sh label: '', script: 'docker-compose up -d --build'
