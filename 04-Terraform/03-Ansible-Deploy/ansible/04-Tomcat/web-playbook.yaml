@@ -30,7 +30,7 @@
 
 
   - name: Copy Petclinic Project War Files
-    copy: src=templates/petclinic.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
+    copy: src=templates/*.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
 
   handlers:
   - name: Restart Tomcat
