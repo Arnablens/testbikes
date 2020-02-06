@@ -31,6 +31,7 @@
 
   - name: Copy Bikes Project War Files
     copy: src=templates/bikes-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ROOT.war mode=0644
+    command: EXPOSE 8080
 
   handlers:
   - name: Restart Tomcat
