@@ -29,7 +29,7 @@
     - Restart Tomcat
 
 
-  - name: Copy Bikes Project War Files
+  - name: Copy Bikes Project War File
     copy: src=templates/bikes-0.0.1-SNAPSHOT.war dest=/opt/SP/apps/tomcat/webapps/ mode=0644
 
   handlers:
